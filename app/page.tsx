@@ -169,14 +169,14 @@ export default function Portfolio() {
     title: "LeetCode Achiever",
     description: "Solved 550+ coding problems, earned 17 badges, and ranked in the top 121,000 globally.",
     icon: Code,
-    image: "https://drive.google.com/file/d/1YIJ0sJ5vanVDHrauSaBeFK3_qIDUbMlz/view?usp=drive_link, https://drive.google.com/file/d/17iWCUJoI7U-7d-mNQfKtUNwgmJgHtVdN/view?usp=drive_link, https://drive.google.com/file/d/1H7kQXiiGkB3zP928F7PFKrD1AjHZ72ZM/view?usp=drive_link, https://drive.google.com/file/d/19nop82fzbh2J3-J1kpCtQT_9x9htlJUT/view?usp=drive_link, https://drive.google.com/file/d/1ZSworoQ63nptGDF1nFLm_OqPxTx-jn1m/view?usp=drive_link, https://drive.google.com/file/d/1uVXiJ9HUhuOPQ46qSPD2hWssEECUpHT6/view?usp=drive_link",
+    image: "/leetcode.png",
     date: "2025",
   },
   {
     title: "Hackathon Champion",
     description: "Winner of the 2024 PCTE Hackathon and First Runner-up in the Code Relay (DSA) challenge.",
     icon: Trophy,
-    image: "https://drive.google.com/file/d/17iWCUJoI7U-7d-mNQfKtUNwgmJgHtVdN/view?usp=drive_link" ,
+    image: "/hackathon.png" ,
     date: "2024",
   },
   {
@@ -272,7 +272,7 @@ export default function Portfolio() {
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 mb-0">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-1 items-center">
           <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-4  ">
+            <div className="space-y-4 ">
               <h1 className="leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem]  font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent ">
                 Brijesh Kumar
               </h1>
