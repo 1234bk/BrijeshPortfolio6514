@@ -516,7 +516,7 @@ export default function Portfolio() {
     <div
       className="flex-1 backdrop-blur-sm border border-white/50 rounded-lg p-6 group-hover:border-cyan-500/50 transition-all duration-300 relative z-10 bg-black/60 text-white"
     >
-      <div className="z-10flex justify-between items-start mb-2">
+      <div className="z-10 flex justify-between items-start mb-2">
         <h3 className="text-xl font-semibold group-hover:text-cyan-400 transition-colors">
           {achievement.title}
         </h3>
