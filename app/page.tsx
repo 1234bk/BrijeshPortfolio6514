@@ -525,7 +525,7 @@ export default function Portfolio() {
       <p className="text-gray-300">{achievement.description}</p>
              {/* Background Image */}
     <div
-      className="absolute inset-0 rounded-lg bg-cover bg-center opacity-30 filter blur-[2px] z-0"
+      className="absolute inset-0 rounded-lg bg-cover bg-center z-0"
       style={{
         backgroundImage: `url(${achievement.image})`,
       }}
