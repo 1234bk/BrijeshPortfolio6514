@@ -518,7 +518,7 @@ export default function Portfolio() {
   <div
     className="absolute inset-0 bg-cover bg-center z-0 opacity-30 filter blur-[2px]"
     style={{
-      backgroundImage: `url(${achievement.image})`,
+      backgroundImage: `url('/hackathon.png')`,
       backgroundColor: 'red', // debug - this MUST show
     }}
   />
