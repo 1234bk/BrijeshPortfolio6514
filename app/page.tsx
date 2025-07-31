@@ -528,6 +528,7 @@ export default function Portfolio() {
       className="absolute inset-0 rounded-lg bg-cover bg-center z-0"
       style={{
         backgroundImage: `url(${achievement.image})`,
+         backgroundColor: 'red',
       }}
     ></div>
     </div>
