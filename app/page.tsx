@@ -277,7 +277,7 @@ export default function Portfolio() {
                 Brijesh Kumar
               </h1>
               <h2 className="text-xl text-center md:text-2xl text-gray-300 font-light">
-               MERN Stack Developer | WordPress |Code Enthusiast | Problem Solver
+               MERN  Developer | WordPress |Code Enthusiast | Problem Solver
 
               </h2>
               <h3 className="text-lg text-center  text-gray-400 max-w-l">
@@ -507,7 +507,7 @@ export default function Portfolio() {
            {achievements.map((achievement, index) => (
   <div key={index} className="flex items-start space-x-6 group relative">
     
-    <div className="flex-shrink-0 z-10 mt-[3rem]">
+    <div className="flex-shrink-0 z-10 mt-[3rem] hidden md:block ">
       <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
         <achievement.icon className="w-6 h-6 text-white" />
       </div>
