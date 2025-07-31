@@ -277,7 +277,7 @@ export default function Portfolio() {
                 Brijesh Kumar
               </h1>
               <h2 className="text-xl text-center md:text-2xl text-gray-300 font-light">
-               MERN  Developer | WordPress |Code Enthusiast | Problem Solver
+               MERN Stack Developer | WordPress |Code Enthusiast | Problem Solver
 
               </h2>
               <h3 className="text-lg text-center  text-gray-400 max-w-l">
