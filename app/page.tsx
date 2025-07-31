@@ -513,29 +513,24 @@ export default function Portfolio() {
       </div>
     </div>
 
-    <div className="relative w-full min-h-[200px] rounded-lg overflow-hidden text-white p-6 bg-black/60 border border-white/30">
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center z-0 opacity-30 filter blur-[2px]"
-    style={{
-      backgroundImage: `url('/hackathon.png')`,
-      backgroundColor: 'red', // debug - this MUST show
-    }}
-  />
-
-  {/* Foreground Content */}
-  <div className="relative z-10">
-    <div className="flex justify-between items-start mb-2">
-      <h3 className="text-xl font-semibold group-hover:text-cyan-400 transition-colors">
-        {achievement.title}
-      </h3>
-      <span className="text-sm text-purple-400 font-medium">
-        {achievement.date}
-      </span>
+     <div
+      className="flex-1 backdrop-blur-sm border border-white/50 rounded-lg p-6 group-hover:border-cyan-500/50 transition-all duration-300 relative z-10 bg-black/60 text-white"
+    >
+      <div className="z-10flex justify-between items-start mb-2">
+        <h3 className="text-xl font-semibold group-hover:text-cyan-400 transition-colors">
+          {achievement.title}
+        </h3>
+        <span className="text-sm text-purple-400 font-medium">{achievement.date}</span>
+      </div>
+      <p className="text-gray-300">{achievement.description}</p>
+             {/* Background Image */}
+    <div
+      className="absolute inset-0 rounded-lg bg-cover bg-center opacity-30 filter blur-[2px] z-0"
+      style={{
+        backgroundImage: `url(${achievement.image})`,
+      }}
+    ></div>
     </div>
-    <p className="text-gray-300">{achievement.description}</p>
-  </div>
-</div>
 
    
   </div>
