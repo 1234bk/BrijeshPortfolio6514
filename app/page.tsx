@@ -379,12 +379,12 @@ export default function Portfolio() {
                     {/* 🎥 Project Demo Video */}
                     {project.video && (
                       <div className="w-full flex justify-center">
-                          <iframe
-      src={`https://www.youtube.com/embed/${project.video.split("https://youtu.be/")[1]}`}
+                           <iframe
+      src={`https://www.youtube.com/embed/${project.video.split("https://youtu.be/")[1]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split("https://youtu.be/")[1]}`}
       title="Project Video"
       className="h-[250px] w-full max-w-full object-contain rounded-xl border border-white/10"
       frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allow="autoplay; encrypted-media"
       allowFullScreen
     ></iframe>
                       </div>
