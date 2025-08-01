@@ -88,7 +88,7 @@ export default function Portfolio() {
       tech: ["HTML", "CSS", "JavaScript"],
       github: "https://github.com/1234bk/quiz",
       demo: "https://bk-quiz.netlify.app/",
-      video: "/quizvd.mp4",
+      video: "https://youtu.be/Kos6RF69cis",
     },
     {
       title: "BloggingKarloGuys",
@@ -97,7 +97,7 @@ export default function Portfolio() {
       tech: ["React", "Firebase", "Firestore"],
       github: "https://github.com/1234bk/blog",
       demo: "bloggingkarloguys.netlify.app", // or your deployed link
-      video: "/blog.mp4", // make sure this is placed in /public/
+      video: "https://youtu.be/op3rUifvxRA", // make sure this is placed in /public/
     },
 
     {
@@ -107,7 +107,7 @@ export default function Portfolio() {
       tech: ["JavaScript", "TAILWIND CSS", "localStorage"],
       github: "https://dailytaskcompletion.netlify.app/",
       demo: "https://dailytaskcompletion.netlify.app/",
-      video: "/todo.mp4",
+      video: " https://youtu.be/p-1FeR5ymIg ",
     },
     {
       title: "Country Explorer",
@@ -116,7 +116,7 @@ export default function Portfolio() {
       tech: ["JavaScript", "REST API", "HTML", "CSS"],
       github: "https://github.com/1234bk/country",
       demo: "https://countrybk.netlify.app/",
-      video: "/country.mp4",
+      video: "https://youtu.be/RonjrnYR1IQ",
     },
     {
       title: "Measuring Tapes Business Website",
@@ -125,7 +125,7 @@ export default function Portfolio() {
       tech: ["WordPress"],
       github: "#",
       demo: "#",
-      video: "/tape.mp4",
+      video: "https://youtu.be/4ZF1saRchWo",
     }
 
 
