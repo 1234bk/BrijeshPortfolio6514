@@ -176,28 +176,28 @@ export default function Portfolio() {
     title: "Hackathon Champion",
     description: "Winner of the 2024 PCTE Hackathon and First Runner-up in the Code Relay (DSA) challenge.",
     icon: Trophy,
-    image: "/hackathon.png" ,
+    image: "https://res.cloudinary.com/dkp9sowj0/image/upload/v1754039828/hackathon_c9ard4.jpg" ,
     date: "2024",
   },
   {
     title: "Project Recognition & LOR",
     description: "Received Letter of Recommendation from PCTE for co-developing the 'PCTE Koshish' web application.",
     icon: Github,
-    image: "/lor.png",
+    image: "https://res.cloudinary.com/dkp9sowj0/image/upload/v1754039793/lor_zonufl.jpg",
     date: "2025",
   },
   {
   title: "6-Week Internship at Ocean Technologies",
   date: "June – July 2024",
   description: "Completed a web development internship focusing on React, Firebase, and responsive UI design. Built real-world components and improved collaborative coding skills.",
-  image: "/internship.png", // Make sure this image is in `public/certs/`
+  image: "https://res.cloudinary.com/dkp9sowj0/image/upload/v1754039828/hackathon_c9ard4.jpg", // Make sure this image is in `public/certs/`
   icon: Briefcase // or any suitable icon you’re using
 },
   {
     title: "Communication Excellence",
     description: "Two-time winner of British Parliamentary Debate and Inter-College Extempore competition.",
     icon: Trophy,
-    image: "/debate.png",
+    image: "https://res.cloudinary.com/dkp9sowj0/image/upload/v1754039796/debate_ydojg0.jpg",
     date: "2023–2025",
   },
 ];
