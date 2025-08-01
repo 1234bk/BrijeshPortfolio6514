@@ -169,7 +169,7 @@ export default function Portfolio() {
     title: "LeetCode Achiever",
     description: "Solved 550+ coding problems, earned 17 badges, and ranked in the top 121,000 globally.",
     icon: Code,
-    image: "/leetcode.png",
+    image: "https://res.cloudinary.com/dkp9sowj0/image/upload/v1754039176/leetcode_zgjg6g.png",
     date: "2025",
   },
   {
