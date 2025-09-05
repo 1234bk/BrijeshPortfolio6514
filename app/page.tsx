@@ -274,7 +274,7 @@ export default function Portfolio() {
           <div className="text-center lg:text-left space-y-8">
             <div className="space-y-4 ">
               <h1 className="leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem]  font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent ">
-                Brijesh Kumar
+                Brijesh kumar
               </h1>
               <h2 className="text-xl text-center md:text-2xl text-gray-300 font-light">
                MERN Stack Developer | WordPress |Code Enthusiast | Problem Solver
