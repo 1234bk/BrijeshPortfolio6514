@@ -10,17 +10,18 @@ import {
   SiEjs,
   SiNodedotjs,
   SiExpress,
-  SiMongodb,
   SiTailwindcss,
   SiBootstrap,
   SiMysql,
+  SiMongodb,
   SiFirebase,
   SiVercel,
   SiNetlify,
   SiGithub,
   SiPostman,
-  
+  SiVisualstudiocode, // <-- correct import for VS Code
 } from "react-icons/si";
+import { TypeAnimation } from 'react-type-animation';
 import {
   Github,
   Linkedin,
@@ -40,7 +41,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
@@ -80,44 +81,74 @@ export default function Portfolio() {
     setTimeout(() => setEmailCopied(false), 2000)
   }
 
+  type Project = {
+  title: string;
+  description: string[]; // Updated to an array of strings
+  tech: string[];
+  github: string;
+  demo: string;
+  video?: string; // Video is optional
+};
+
   const projects = [
     {
-      title: "Interactive Quiz App",
-      description:
-        "A dynamic quiz application built with HTML, CSS, and JavaScript. Features include category selection, instant answer feedback, and theme switching for a personalized user experience.",
-      tech: ["HTML", "CSS", "JavaScript"],
-      github: "https://github.com/1234bk/quiz",
-      demo: "https://bk-quiz.netlify.app/",
-      video: "https://youtu.be/Kos6RF69cis",
-    },
-    {
-      title: "BloggingKarloGuys",
-      description:
-        "A full-stack blogging platform using React, Tailwind CSS, and Firebase with secure login, blog creation, interaction, filtering, and a personalized dashboard—delivered in a clean, responsive UI for a seamless user experience.",
-      tech: ["React", "Firebase", "Firestore"],
-      github: "https://github.com/1234bk/blog",
-      demo: "bloggingkarloguys.netlify.app", // or your deployed link
-      video: "https://youtu.be/op3rUifvxRA", // make sure this is placed in /public/
-    },
+  title: "T&P Website -PCTE",
+ description: [
+  "College TNP portal to view posts, search jobs, top recruiters, and TPO team info.",
+  "Real-time guest lectures, highest packages, and announcements managed by admin.",
+  "Secure, scalable system with protected routes, admin controls, and responsive design.",
+],
 
+  tech: ["MERN"],
+  github: "https://github.com/1234bk/tnpFrontend.git",
+  demo: "https://tnp-frontend-pi.vercel.app/",
+   video: "https://youtu.be/zeodpqahO5M",
+},
     {
-      title: "Dynamic To-Do List Website",
-      description:
-        "A responsive and intuitive to-do list app with real-time task management, localStorage persistence, and seamless task editing features.",
-      tech: ["JavaScript", "TAILWIND CSS", "localStorage"],
-      github: "https://dailytaskcompletion.netlify.app/",
-      demo: "https://dailytaskcompletion.netlify.app/",
-      video: " https://youtu.be/p-1FeR5ymIg ",
-    },
+  title: "Interactive Quiz App",
+ description: [
+  "API-driven quiz with category-based real-time questions.",
+  "MCQs with timer and instant answer feedback.",
+  "Responsive design with light/dark theme switcher.",
+],
+  tech: [ "JavaScript"],
+  github: "https://github.com/1234bk/quiz",
+  demo: "https://bk-quiz.netlify.app/",
+  video: "https://youtu.be/Kos6RF69cis",
+},
     {
-      title: "Country Explorer",
-      description:
-        "An interactive country explorer built with JavaScript and REST API integration. Instantly fetch and display details like borders, population, and more with a responsive, user-friendly interface.",
-      tech: ["JavaScript", "REST API", "HTML", "CSS"],
-      github: "https://github.com/1234bk/country",
-      demo: "https://countrybk.netlify.app/",
-      video: "https://youtu.be/RonjrnYR1IQ",
-    },
+  title: "LinkSphere – Let's Connect",
+description: [
+  "LinkedIn-like social platform with post creation, likes, comments, and user discovery.",
+  "Real-time chat and video calls powered by Socket.io for seamless communication.",
+  "Admin dashboard to manage users and posts, with secure authentication and responsive design.",
+],
+  tech: ["MERN"],
+  github: "https://github.com/1234bk/linksphere-assignment.git",
+  demo: "https://linksphere-link.vercel.app/",
+  video: "https://youtu.be/FdItmda2Udc",
+}
+,
+
+  
+  
+  
+{
+  title: "Project-HD Glow",
+  description: [
+  "AI-driven skincare solution suggesting routines, creams, and diets based on user input.",
+  "Secure OTP-based login/signup via email.",
+  "Integrated with Grok API and ChatGPT in a responsive interface.",
+],
+
+  tech: ["MERN"],
+  github: "https://github.com/1234bk/PROJECT-HD.git",
+  demo: "https://project-hd-1.onrender.com/",
+  
+      video: "https://youtu.be/4ca7b5mcaBI",
+}
+,
+    
     {
       title: "Measuring Tapes Business Website",
       description:
@@ -131,36 +162,38 @@ export default function Portfolio() {
 
   ]
 
- const skills = {
-  Languages: [
-    { name: "C++", icon: <SiCplusplus /> },
-    { name: "C#", icon: <SiCplusplus /> },
-    { name: "Python", icon: <SiPython /> },
-    { name: "JavaScript", icon: <SiJavascript /> },
-  ],
-  WebDevelopment: [
-    { name: "React", icon: <SiReact /> },
-    { name: "EJS", icon: <SiEjs /> },
-    { name: "Node.js", icon: <SiNodedotjs /> },
-    { name: "Express", icon: <SiExpress /> },
+const skills = {
+  
+  WebDevelopment: [ 
+    { name: "Express", icon: <SiExpress className="text-gray-300" /> },
+    { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+    { name: "Node.js", icon: <SiNodedotjs className="text-[#68A063]" /> },
   ],
   Styling: [
-    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-    { name: "Bootstrap", icon: <SiBootstrap /> },
+    { name: "Bootstrap", icon: <SiBootstrap className="text-[#7952B3]" /> },
   ],
   Database: [
-    { name: "MySQL", icon: <SiMysql /> },
-    { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "Firebase", icon: <SiFirebase /> },
+     { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
+    { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> }, 
+    { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
   ],
   Deployment: [
-    { name: "Vercel", icon: <SiVercel /> },
-    { name: "Netlify", icon: <SiNetlify /> },
-    { name: "GitHub", icon: <SiGithub /> },
+        { name: "GitHub", icon: <SiGithub className="text-gray-300" /> },
+  ],
+   Languages: [
+    { name: "C++", icon: <SiCplusplus className="text-[#00599C]" /> },
+    { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+    { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+ 
   ],
   Tools: [
-    { name: "Postman", icon: <SiPostman /> },
-    { name: "VS Code", icon: <SiGithub/> },
+    
+      { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
+        { name: "EJS", icon: <SiEjs className="text-[#B4CA65]" /> },
+            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
+            { name: "Vercel", icon: <SiVercel className="text-white" /> },
+    { name: "Netlify", icon: <SiNetlify className="text-[#00C7B7]" /> },
+  //  { name: "Visual Studio Code", icon: <SiVisualstudiocode className="text-[#007ACC]" /> },
   ],
 };
 
@@ -236,20 +269,16 @@ export default function Portfolio() {
 
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden  scroll-smooth">
-      {/* Animated Background */}
-      {/* <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
-        <div className="stars absolute inset-0" />
-      </div> */}
-
+    <div className="min-h-screen bg-slate-1000 text-white overflow-x-hidden  scroll-smooth">
+      
       {/* Floating Navigation */}
       <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-6 py-3">
         <div className="flex space-x-6">
           {[
             { id: "home", label: "Home", icon: User },
-            { id: "projects", label: "Projects", icon: Briefcase },
             { id: "skills", label: "Skills", icon: Code },
+            { id: "projects", label: "Projects", icon: Briefcase },
+            
             { id: "achievements", label: "Achievements", icon: Trophy },
             { id: "contact", label: "Contact", icon: MessageSquare },
           ].map(({ id, label, icon: Icon }) => (
@@ -272,230 +301,353 @@ export default function Portfolio() {
       <section id="home" className="relative min-h-screen flex items-center justify-center px-6 mb-0">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-1 items-center">
           <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-4 ">
-              <h1 className="leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem]  font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent ">
-                Brijesh kumar
-              </h1>
-              <h2 className="text-xl text-center md:text-2xl text-gray-300 font-light">
-               MERN Stack Developer | WordPress |Code Enthusiast | Problem Solver
 
-              </h2>
-              <h3 className="text-lg text-center  text-gray-400 max-w-l">
-               "Merging creativity with code to bring ideas to life on the web."  </h3>
+            <div className="mt-1  pt-[1.5rem] ">
+              <h1 className="leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem] pb-2 text-center font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent ">
+                Brijesh Kumar
+              </h1>
+             
+            <TypeAnimation
+              sequence={[
+                'MERN Stack Developer',
+                1500,
+                'WordPress Specialist',
+                1500,
+                'FRONTEND Engineer',
+                1500,
+                'BACKEND Engineer',
+                1500,
+               
+                 'DSA Enthusiast',
+                1500,
+                '550+  leetcode problems solver',
+                1500,
+                'LOR from PCTE College – Web Developer (T&P)',
+                1500,
+              ]}
+              wrapper="h2"
+              speed={50}
+              className="text-2xl text-center mb-7 md:text-4xl twxt-white"
+              repeat={Infinity}
+            />
+
+           
+
+      <h3 className="text-lg hidden lg:block text-center text-gray-400 mx-auto max-w-2xl">
+  Merging creativity with code to craft interactive experiences,  
+  solve real-world problems, and bring innovative ideas to life on the web.
+</h3>
+
+ <h3 className="text-lg lg:hidden text-center  text-gray-400 mx-auto max-w-2xl">
+  Let's build something amazing together!!!
+</h3>
+
+            
             </div>
 
-            <div className=" pt-5 flex flex-wrap gap-4 justify-center lg:justify-cemter ">
-              <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
-                >
-                  <Github className="mr-2 h-5 w-5" />
-                  GitHub
-                </Button>
-              </a>
+          
+          <div className="flex justify-center items-center pt-[0.8rem]   ">
+             <div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 p-1 max-w-[14rem] py-1   hover:text-black hover:shadow-lg hover:shadow-gray-500/50    transition-colors ">
+              <a href="https://drive.google.com/file/d/18L1dM8ytXn_JFINocezUENweuSoh2jvF/view?usp=drive_link" target="_blank" rel="noopener noreferrer"  >
+              <Button
+                size="lg"
+                // Changed button color to match new gradient or a complementary tone
+                className="bg-black hover:bg-white/100 hover:text-black  text-white font-semibold"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                View My Resume
+              </Button>
+            </a>
+            </div>
+          </div>
+          
 
-              <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border-purple-500 text-purple-400 hover:bg-purple-500/10"
-                >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  LinkedIn
-                </Button>
-              </a>
+            <div className="mt-[9rem] max-w-lg md:max-w-full flex flex-wrap gap-6 pt-[1.5rem] md:pt-0 justify-center lg:justify-cemter  md:mt-[0rem] ">
+             
+            
+            {/* Secondary CTAs */}
+             <div className="bg-black p-1 border-2 border-white rounded-full">  
+            <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
+              </Button>
+            </a>
+            </div>
+              <div className="bg-black p-1 rounded-full border-2 border-white">  
+            <a href="https://leetcode.com/u/brijeshkumar_1234/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+             <Code className="mr-2 h-5 w-5" />
+                LeetCode
+               
+              </Button>
+            </a>
+            
+            </div>
 
-              <a href="https://leetcode.com/u/brijeshkumar_1234/" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border-green-500 text-green-400 hover:bg-green-500/10"
-                >
-                  <Code className="mr-2 h-5 w-5" />
-                  LeetCode
-                </Button>
-              </a>
+              <div className="bg-black p-1 border-2 border-white rounded-full">  
+            <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                <Linkedin className="mr-2 h-5 w-5" />
+                LinkedIn
+              </Button>
+            </a>
+         
+            </div>
 
-              <a href="/brijesh_resume.pdf" download>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-transparent border-orange-500 text-orange-400 hover:bg-orange-500/10"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Resume
-                </Button>
-              </a>
+            
+         
+
+              
 
 
+            </div>
+
+            {/* Availability Status */}
+            <div className="flex justify-center pt-5 lg:justify-start items-center gap-2 animate-pulse ">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <p className="text-sm text-green-400">
+                    Actively seeking new opportunities
+                </p>
             </div>
           </div>
 
-          {/* <div className=" z-10 flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 p-1 ">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <img
-                    src="/bkpic.jpg"
-                    alt="Profile"
-                    className="w-72 h-72 rounded-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-500 rounded-full animate-ping" />
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full animate-pulse" />
-            </div>
-          </div> */}
+      
         </div>
 
-        {/* Diagonal Divider */}
-        {/* <div className="z--10 absolute bottom-0 left-0 w-full h-24 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 transform -skew-y-1" /> */}
-
+       
       </section>
+
+     
+{/* Skills Section */}
+<section id="skills" className="relative py-24 px-6 bg-black">
+  <div className="max-w-6xl mx-auto">
+   
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 ">
+        Technical Skills
+      </h2>
+       <p className="text-gray-400 text-lg md:hidden block  mx-auto">
+        My go-to stack of modern technologies 
+      </p>
+      <p className="text-gray-400 text-lg hidden md:block  mx-auto">
+        My go-to stack of modern technologies for building scalable, responsive, and eye-catching applications.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-8">
+  {Object.entries(skills)
+    .flatMap(([category, skillList]) => skillList)
+    .slice(0, 12)  // Show first 12 skills by default
+    .map((skill, index) => (
+      <div
+        key={skill.name + index}
+        className="flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-500/50 rounded-xl hover:scale-105 transform transition-all p-2 duration-300 group cursor-pointer"
+      >
+        <div className="w-20  border-blue-400 h-20 flex items-center justify-center rounded-full  mb-4 group-hover:border-white duration-300  border-2 border-blue- hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors ">
+          <span className="text-3xl text-white group-hover:text-black">{skill.icon}</span>
+        </div>
+
+        <span className="text-white font-medium text-center ">
+          {skill.name}
+        </span>
+      </div>
+    ))}
+
+
+  {Object.entries(skills)
+    .flatMap(([category, skillList]) => skillList)
+    .slice(12)
+    .map((skill, index) => (
+      <div
+        key={skill.name + index}
+        className="hidden sm:hidden md:flex  hover:shadow-lg hover:shadow-gray-500/50 flex-col items-center justify-center backdrop-blur-sm rounded-xl hover:scale-105 transform transition-all duration-300 group cursor-pointer"
+      >
+        <div className="w-20 h-20 flex items-center justify-center rounded-full  mb-4 group-hover:border-white duration-300  border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+          <span className="text-3xl text-white" >{skill.icon}</span>
+        </div>
+
+        <span className="text-white font-medium text-center group-hover:text-cyan-400">
+          {skill.name}
+        </span>
+      </div>
+    ))}
+</div>
+
+
+
+
+  </div>
+</section>
+
 
 
 
       {/* Projects Section */}
-      <section id="projects" className="relative py-12 px-6 ">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-           Highlighting recent work that reflects my proficiency in full-stack development and cutting-edge tech stacks. </p>
+      {/* <section id="projects" className="relative py-12 px-6 bg-black">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+        Featured Projects
+      </h2>
+      <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        Highlighting recent work that reflects my proficiency in full-stack development and cutting-edge tech stacks.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {projects.map((project, index) => (
+        <div
+          key={index}
+          className="bg-gray-900 bg-opacity-70 rounded-xl p-6 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300"
+        >
+          <div>
+            
+            <h3 className="text-2xl font-semibold text-white mb-4">{project.title}</h3>
+
+            <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6 min-h-[8rem]">
+  {Array.isArray(project.description) ? (
+    project.description.map((point, i) => <li key={i}>{point}</li>)
+  ) : (
+    <li>{project.description}</li>
+  )}
+</ul>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-block px-3 py-1 text-sm font-medium rounded-full border border-purple-500/50 text-purple-300"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1  md:grid-cols-3 gap-8 md:p-[0rem]  p-[2rem] pt-0">
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="md:mb-0 mb-[2rem] bg-black/40 backdrop-blur-sm border border-white/70 hover:border-cyan-500/50 transition-all duration-300 group"
-              >
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    {/* 🎥 Project Demo Video */}
-                    {project.video && (
-                      <div className="w-full flex justify-center">
-                           <iframe
-      src={`https://www.youtube.com/embed/${project.video.split("https://youtu.be/")[1]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split("https://youtu.be/")[1]}`}
-      title="Project Video"
-      className="h-[250px] w-full max-w-full object-contain rounded-xl border border-white/10"
-      frameBorder="0"
-      allow="autoplay; encrypted-media"
-      allowFullScreen
-    ></iframe>
-                      </div>
-                    )}
-
-
-
-                    {/* 🔤 Title */}
-                    <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
-                      {project.title}
-                    </h3>
-
-                    {/* 📝 Description */}
-                    <p className="text-gray-400 min-h-[12rem] ">{project.description}</p>
-
-                    {/* 🧠 Tech Stack */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <Badge key={tech} variant="outline" className="border-purple-500/50 text-purple-300">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    {/* 🔗 Links */}
-                    <div className="flex flex-wrap gap-4 pt-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="bg-transparent border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
-                        asChild
-                      >
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="mr-2 h-4 w-4" />
-                          Code
-                        </a>
-                      </Button>
-
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="bg-transparent border-purple-500 text-purple-400 hover:bg-purple-500/10"
-                        asChild
-                      >
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-
+          
+          <div className="flex gap-4">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 border border-cyan-500 text-cyan-400 rounded-md text-sm font-semibold hover:bg-cyan-500/20 transition"
+            >
+              <Github className="h-5 w-5" />
+              Code
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 border border-purple-500 text-purple-400 rounded-md text-sm font-semibold hover:bg-purple-500/20 transition"
+            >
+              <ExternalLink className="h-5 w-5" />
+              Demo
+            </a>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</section> */}
 
-        {/* Diagonal Divider */}
-        {/* <div className="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-l from-purple-500/20 to-cyan-500/20 transform skew-y-1" /> */}
-      </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="relative py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Technical Skills
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            My go-to stack of modern technologies for developing responsive, scalable, and user-focused applications.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-  {Object.entries(skills).map(([category, skillList]) => (
-    <Card
-      key={category}
-      className="bg-black/40 backdrop-blur-sm border border-white/30 hover:border-purple-500/50 transition-all duration-300"
-    >
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold text-purple-400 mb-4">{category}</h3>
-        <div className="space-y-3">
-          {skillList.map((skill) => (
-            <div key={skill.name} className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-gray-300">
-                <span className="text-xl">{skill.icon}</span>
-                <span>{skill.name}</span>
+
+  <section id="projects" className="relative py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 btext-white">
+            Featured Projects
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A selection of my work, showcasing my skills in building modern, responsive web applications.
+          </p>
+        </div>
+
+        
+        <div className="space-y-16">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="group grid grid-cols-1 md:grid-cols-5 gap-8 items-center "
+            >
+              <div className="md:col-span-2  border-2 border-white hover:border-blue-400 overflow-hidden transform group-hover:scale-105 transition-transform duration-300">
+                {project.video ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/$${project.video.split("https://youtu.be/")[1]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split("https://youtu.be/")[1]}`}
+                    title={`${project.title} Video`}
+                    className="h-full w-full min-h-[250px] object-cover rounded-xl"
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <div className="flex items-center justify-center h-[250px] w-full bg-gray-900/50 border border-gray-800 rounded-xl">
+                    <p className="text-gray-500">No video preview available</p>
+                  </div>
+                )}
               </div>
-              <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full animate-pulse" />
+
+              <div className="md:col-span-3 p-5">
+                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                  {project.title}
+                </h3>
+                    <ul className="list-disc hidden md:block list-inside space-y-2 text-gray-300 mb-2 min-h-[7rem]">
+  {Array.isArray(project.description) ? (
+    project.description.map((point, i) => <li key={i}>{point}</li>)
+  ) : (
+    <li>{project.description}</li>
+  )}
+</ul>
+               
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {project.tech.map((tech) => (
+                    <Badge key={tech} className="bg-slate-1200 hover:bg-black hover:scale-105 border-white text-blue-300">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div className="flex flex-wrap gap-8">
+                 
+
+                   {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
+            <a href={project.github}  target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className=" text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                <Github className="mr-2 h-5 w-5" />
+                View Code
+              </Button>
+            </a>
+            {/* </div> */}
+
+
+                       {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
+            <a href={project.demo}  target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="  text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                 <ExternalLink className="mr-2 h-4 w-4" />
+                      Live Demo
+              </Button>
+            </a>
+            {/* </div> */}
+               
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </CardContent>
-    </Card>
-  ))}
-</div>
+      </div>
+    </section>
 
-        </div>
 
-        {/* Diagonal Divider */}
-        {/* <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 transform -skew-y-1" /> */}
-      </section>
+      
 
       {/* Achievements Section */}
       <section id="achievements" className="relative py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
               Achievements
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -507,7 +659,7 @@ export default function Portfolio() {
   <div key={index} className="flex items-start space-x-6 group relative">
     
     <div className="flex-shrink-0 z-10 mt-[3rem] hidden md:block ">
-      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
+      <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
         <achievement.icon className="w-6 h-6 text-white" />
       </div>
     </div>
@@ -546,7 +698,7 @@ export default function Portfolio() {
       <section id="contact" className="relative py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 ">
               Let's Connect
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -566,7 +718,7 @@ export default function Portfolio() {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-cyan-400" />
+                  <Mail className="w-6 h-6 text-white" />
                   <div className="flex items-center space-x-2">
                     <span className="text-gray-300">brijesh6514@gmail.com</span>
                     <Button variant="ghost" size="sm" onClick={copyEmail} className="text-cyan-400 hover:text-cyan-300">
@@ -577,26 +729,24 @@ export default function Portfolio() {
               </div>
 
               <div className="flex space-x-4">
-                 <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
-                
-                <Button variant="outline" className="bg-transparent border-cyan-500 text-cyan-400 hover:bg-cyan-500/10">
-                  <Github className="mr-2 h-5 w-5" />
-                  GitHub
-                </Button>
-                
-              </a>
+                  {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
+            <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
+              </Button>
+            </a>
+            {/* </div> */}
 
-              <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
-                
-              
-                <Button
-                  variant="outline"
-                  className="bg-transparent border-purple-500 text-purple-400 hover:bg-purple-500/10"
-                >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  LinkedIn
-                </Button>
-                </a>
+                 {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
+            <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                <Linkedin className="mr-2 h-5 w-5" />
+                LinkedIn
+              </Button>
+            </a>
+         
+            {/* </div> */}
               </div>
             </div>
 
