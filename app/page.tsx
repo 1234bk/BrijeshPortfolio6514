@@ -42,10 +42,38 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import emailjs from "@emailjs/browser"
+import 'animate.css';
+
+
+export function useOnScreen(options) {
+  const ref = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      options
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current)
+    }
+  }, [ref, options])
+
+  return [ref, isVisible]
+}
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const [emailCopied, setEmailCopied] = useState(false)
+  const [skillsRef, skillsVisible] = useOnScreen({ threshold: 0.3 })
+  const [projectsRef, projectsVisible] = useOnScreen({ threshold: 0.3 })
+  const [achievementsRef, achievementsVisible] = useOnScreen({ threshold: 0.1 })
+  const [contactRef, contactVisible] = useOnScreen({ threshold: 0.3 })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -269,10 +297,11 @@ const skills = {
 
 
   return (
+    <>
     <div className="min-h-screen bg-slate-1000 text-white overflow-x-hidden  scroll-smooth">
       
       {/* Floating Navigation */}
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-6 py-3">
+      <nav className=" animate__animated animate__fadeIn  animate__slow  fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-6 py-3">
         <div className="flex space-x-6">
           {[
             { id: "home", label: "Home", icon: User },
@@ -303,7 +332,7 @@ const skills = {
           <div className="text-center lg:text-left space-y-8">
 
             <div className="mt-1  pt-[1.5rem] ">
-              <h1 className="leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem] pb-2 text-center font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent ">
+              <h1 className="animate__animated animate__shakeX animate__slow leading-relaxed text-5xl md:text-[7rem] pt-[0rem] md:pt-[2rem] pb-2 text-center font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 bg-clip-text text-transparent ">
                 Brijesh Kumar
               </h1>
              
@@ -327,7 +356,7 @@ const skills = {
               ]}
               wrapper="h2"
               speed={50}
-              className="text-2xl text-center mb-7 md:text-4xl twxt-white"
+              className="text-2xl animate__animated animate__zoomIn  animate__slow  text-center mb-7 md:text-4xl twxt-white"
               repeat={Infinity}
             />
 
@@ -346,7 +375,7 @@ const skills = {
             </div>
 
           
-          <div className="flex justify-center items-center pt-[0.8rem]   ">
+          <div className="animate__animated animate__zoomInDown  flex justify-center items-center pt-[0.8rem]   ">
              <div className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 p-1 max-w-[14rem] py-1   hover:text-black hover:shadow-lg hover:shadow-gray-500/50    transition-colors ">
               <a href="https://drive.google.com/file/d/18L1dM8ytXn_JFINocezUENweuSoh2jvF/view?usp=drive_link" target="_blank" rel="noopener noreferrer"  >
               <Button
@@ -366,7 +395,7 @@ const skills = {
              
             
             {/* Secondary CTAs */}
-             <div className="bg-black p-1 border-2 border-white rounded-full">  
+             <div className="animate__animated animate__zoomIn  animate__slow  bg-black p-1 border-2 border-white rounded-full">  
             <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
                 <Github className="mr-2 h-5 w-5" />
@@ -374,7 +403,7 @@ const skills = {
               </Button>
             </a>
             </div>
-              <div className="bg-black p-1 rounded-full border-2 border-white">  
+              <div className="animate__animated animate__zoomIn  animate__slow bg-black p-1 rounded-full border-2 border-white">  
             <a href="https://leetcode.com/u/brijeshkumar_1234/" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
              <Code className="mr-2 h-5 w-5" />
@@ -385,7 +414,7 @@ const skills = {
             
             </div>
 
-              <div className="bg-black p-1 border-2 border-white rounded-full">  
+              <div className="animate__animated animate__zoomIn  animate__slow  bg-black p-1 border-2 border-white rounded-full">  
             <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="lg" className="rounded-full text-white border-2 border-indigo-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
                 <Linkedin className="mr-2 h-5 w-5" />
@@ -398,7 +427,7 @@ const skills = {
 
             {/* Availability Status */}
             <div className="flex justify-center pt-5 lg:justify-start items-center gap-2 animate-pulse ">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full "></div>
                 <p className="text-sm text-green-400">
                     Actively seeking new opportunities
                 </p>
@@ -413,10 +442,15 @@ const skills = {
 
      
 {/* Skills Section */}
-<section id="skills" className="relative py-24 px-6 bg-black">
+{/* <section id="skills"    ref={skillsRef} className="relative py-24 px-6 bg-black"> */}
+    <section
+       
+        id="skills"
+        className="relative py-24 px-6 bg-black"
+      >
   <div className="max-w-6xl mx-auto">
    
-    <div className="text-center mb-16">
+    <div  ref={skillsRef}  className="text-center mb-16">
       <h2 className="text-4xl md:text-5xl font-bold mb-4 ">
         Technical Skills
       </h2>
@@ -428,7 +462,12 @@ const skills = {
       </p>
     </div>
 
-    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-8">
+    <div
+  
+    className={`grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-8
+  ${skillsVisible ? "animate__animated animate__bounceIn animate__slow opacity-100" : "opacity-0"}`}
+
+        >
   {Object.entries(skills)
     .flatMap(([category, skillList]) => skillList)
     .slice(0, 12)  // Show first 12 skills by default
@@ -473,99 +512,26 @@ const skills = {
   </div>
 </section>
 
-
-
-
-
-
-
     {/* project section */}
-  <section id="projects" className="relative py-20 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 btext-white">
-            Featured Projects
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A selection of my work, showcasing my skills in building modern, responsive web applications.
-          </p>
-        </div>
+    <section id="projects" className="relative py-20 px-4 sm:px-6">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+        Featured Projects
+      </h2>
+      <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        A selection of my work, showcasing my skills in building modern, responsive web applications.
+      </p>
+    </div>
 
-        
-        <div className="space-y-16">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group grid grid-cols-1 md:grid-cols-5 gap-8 items-center "
-            >
-              <div className="md:col-span-2  border-2 border-white hover:border-blue-400 overflow-hidden transform group-hover:scale-105 transition-transform duration-300">
-                {project.video ? (
-                  <iframe
-                    src={`https://www.youtube.com/embed/$${project.video.split("https://youtu.be/")[1]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split("https://youtu.be/")[1]}`}
-                    title={`${project.title} Video`}
-                    className="h-full w-full min-h-[250px] object-cover rounded-xl"
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                  ></iframe>
-                ) : (
-                  <div className="flex items-center justify-center h-[250px] w-full bg-gray-900/50 border border-gray-800 rounded-xl">
-                    <p className="text-gray-500">No video preview available</p>
-                  </div>
-                )}
-              </div>
+    <div className="space-y-16">
+      {projects.map((project, index) => (
+        <ProjectItem project={project} key={index} index={index} />
+      ))}
+    </div>
 
-              <div className="md:col-span-3 p-5">
-                <h3 className="text-2xl text-center md:text-start font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                  {project.title}
-                </h3>
-                    <ul className="list-disc hidden md:block list-inside space-y-2 text-gray-300 mb-2 min-h-[7rem]">
-  {Array.isArray(project.description) ? (
-    project.description.map((point, i) => <li key={i}>{point}</li>)
-  ) : (
-    <li>{project.description}</li>
-  )}
-</ul>
-               
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {project.tech.map((tech) => (
-                    <Badge key={tech} className="bg-slate-1200 hover:bg-black hover:scale-105 border-white text-blue-300">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                {/* Links */}
-                
-                <div className="flex flex-nowrap gap-4 overflow-x-auto">
-  <a href={project.github} target="_blank" rel="noopener noreferrer">
-    <Button
-      variant="outline"
-      size="lg"
-      className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap"
-    >
-      <Github className="mr-2 h-5 w-5" />
-      View Code
-    </Button>
-  </a>
-  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-    <Button
-      variant="outline"
-      size="lg"
-      className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap"
-    >
-      <ExternalLink className="mr-2 h-4 w-4" />
-      Live Demo
-    </Button>
-  </a>
-</div>
-
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
 
       
@@ -581,9 +547,13 @@ const skills = {
             A journey of accomplishments that demonstrate my pursuit of excellence and lifelong learning. </p>
           </div>
 
-          <div className="space-y-8">
+          <div ref={achievementsRef} className="space-y-8">
            {achievements.map((achievement, index) => (
-  <div key={index} className="flex items-start space-x-6 group relative">
+  <div
+   
+   key={index} className={`flex items-start space-x-6 group relative 
+     ${achievementsVisible ? "animate__animated animate__zoomIn animate__slow opacity-100" : "opacity-0"}
+   `}>
     
     <div className="flex-shrink-0 z-10 mt-[3rem] hidden md:block ">
       <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
@@ -620,7 +590,9 @@ const skills = {
         </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-24 px-6">
+      <section id="contact" 
+      ref={contactRef}
+      className="relative py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 ">
@@ -640,42 +612,32 @@ const skills = {
                   technology.
                 </p>
               </div>
-{/* 
-              <div className="md:space-y-4 space-y-">
-                <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-white" />
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-300">brijesh6514@gmail.com</span>
-                    <Button variant="ghost" size="sm" onClick={copyEmail} className="text-blue-400 hover:text-blue-400">
-                      {emailCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                    </Button>
-                  </div>
-                </div>
-              </div> */}
+
 
               <div className="flex space-x-4">
-                  {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
-            <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className=" rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
+                  <a href="https://github.com/1234bk" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className={` rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors 
+                            ${contactVisible ? "animate__animated animate__zoomIn animate__slow opacity-100" : "opacity-0"}
+              `}>
                 <Github className="mr-2 h-5 w-5" />
                 GitHub
               </Button>
             </a>
-            {/* </div> */}
-
-                 {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
             <a href="https://www.linkedin.com/in/brijesh-kumar123/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
-                <Linkedin className="mr-2 h-5 w-5" />
+               <Button variant="outline" size="lg" className={` rounded-full text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors 
+                            ${contactVisible ? "animate__animated animate__zoomIn animate__slow opacity-100" : "opacity-0"}
+              `}>
+               <Linkedin className="mr-2 h-5 w-5" />
                 LinkedIn
               </Button>
             </a>
          
-            {/* </div> */}
               </div>
             </div>
 
-            <Card className="bg-black/40 backdrop-blur-sm border border-white/10">
+            <Card className={`bg-black/40 backdrop-blur-sm border border-white/100
+              ${contactVisible ? "animate__animated animate__backInDown animate__slow opacity-100" : "opacity-0"}
+              `}>
               <CardContent className="p-6">
                 <form ref={formRef} onSubmit={handleSubmit}  className="space-y-6">
                   <div>
@@ -718,5 +680,81 @@ const skills = {
         </div>
       </footer>
     </div>
+    </>
   )
 }
+
+
+
+
+
+const ProjectItem = ({ project, index }) => {
+  const [ref, isVisible] = useOnScreen({ threshold: 0.3 });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) setHasAnimated(true);
+  }, [isVisible]);
+
+  const animationClass = hasAnimated
+    ? index % 2 === 0
+      ? "animate__animated animate__fadeInLeft animate__slow opacity-100"
+      : "animate__animated animate__fadeInRight animate__slow opacity-100"
+    : "opacity-0";
+
+  return (
+    <div ref={ref} className={`group grid grid-cols-1 md:grid-cols-5 gap-8 items-center ${animationClass}`}>
+      <div className="md:col-span-2 border-2 border-white hover:border-blue-400 overflow-hidden transform group-hover:scale-105 transition-transform duration-300">
+        {project.video ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${project.video.split("https://youtu.be/")[1]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split("https://youtu.be/")[1]}`}
+            title={`${project.title} Video`}
+            className="h-full w-full min-h-[250px] object-cover rounded-xl"
+            frameBorder="0"
+            loading="lazy"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
+        ) : (
+          <div className="flex items-center justify-center h-[250px] w-full bg-gray-900/50 border border-gray-800 rounded-xl">
+            <p className="text-gray-500">No video preview available</p>
+          </div>
+        )}
+      </div>
+
+      <div className="md:col-span-3 p-5">
+        <h3 className="text-2xl text-center md:text-start font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+          {project.title}
+        </h3>
+
+        <ul className="list-disc hidden md:block list-inside space-y-2 text-gray-300 mb-2 min-h-[7rem]">
+          {Array.isArray(project.description)
+            ? project.description.map((point, i) => <li key={i}>{point}</li>)
+            : <li>{project.description}</li>}
+        </ul>
+
+        <div className="flex flex-wrap gap-3 mb-6">
+          {project.tech.map((tech) => (
+            <Badge key={tech} className="bg-slate-1200 hover:bg-black hover:scale-105 border-white text-blue-300">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+
+        <div className="flex flex-nowrap gap-4 overflow-x-auto">
+          <a href={project.github} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap">
+              <Github className="mr-2 h-5 w-5" /> View Code
+            </Button>
+          </a>
+
+          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap">
+              <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
