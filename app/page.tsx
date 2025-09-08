@@ -347,7 +347,7 @@ const skills = {
 
           
           <div className="flex justify-center items-center pt-[0.8rem]   ">
-             <div className="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 p-1 max-w-[14rem] py-1   hover:text-black hover:shadow-lg hover:shadow-gray-500/50    transition-colors ">
+             <div className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 p-1 max-w-[14rem] py-1   hover:text-black hover:shadow-lg hover:shadow-gray-500/50    transition-colors ">
               <a href="https://drive.google.com/file/d/18L1dM8ytXn_JFINocezUENweuSoh2jvF/view?usp=drive_link" target="_blank" rel="noopener noreferrer"  >
               <Button
                 size="lg"
@@ -394,14 +394,7 @@ const skills = {
             </a>
          
             </div>
-
-            
-         
-
-              
-
-
-            </div>
+          </div>
 
             {/* Availability Status */}
             <div className="flex justify-center pt-5 lg:justify-start items-center gap-2 animate-pulse ">
@@ -467,7 +460,7 @@ const skills = {
           <span className="text-3xl text-white" >{skill.icon}</span>
         </div>
 
-        <span className="text-white font-medium text-center group-hover:text-cyan-400">
+        <span className="text-white font-medium text-center group-hover:text-blue-400">
           {skill.name}
         </span>
       </div>
@@ -483,77 +476,10 @@ const skills = {
 
 
 
-      {/* Projects Section */}
-      {/* <section id="projects" className="relative py-12 px-6 bg-black">
-  <div className="max-w-7xl mx-auto">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-        Featured Projects
-      </h2>
-      <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-        Highlighting recent work that reflects my proficiency in full-stack development and cutting-edge tech stacks.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {projects.map((project, index) => (
-        <div
-          key={index}
-          className="bg-gray-900 bg-opacity-70 rounded-xl p-6 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300"
-        >
-          <div>
-            
-            <h3 className="text-2xl font-semibold text-white mb-4">{project.title}</h3>
-
-            <ul className="list-disc list-inside space-y-2 text-gray-300 mb-6 min-h-[8rem]">
-  {Array.isArray(project.description) ? (
-    project.description.map((point, i) => <li key={i}>{point}</li>)
-  ) : (
-    <li>{project.description}</li>
-  )}
-</ul>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="inline-block px-3 py-1 text-sm font-medium rounded-full border border-purple-500/50 text-purple-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          
-          <div className="flex gap-4">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-cyan-500 text-cyan-400 rounded-md text-sm font-semibold hover:bg-cyan-500/20 transition"
-            >
-              <Github className="h-5 w-5" />
-              Code
-            </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-purple-500 text-purple-400 rounded-md text-sm font-semibold hover:bg-purple-500/20 transition"
-            >
-              <ExternalLink className="h-5 w-5" />
-              Demo
-            </a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section> */}
 
 
 
-
+    {/* project section */}
   <section id="projects" className="relative py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -590,7 +516,7 @@ const skills = {
               </div>
 
               <div className="md:col-span-3 p-5">
-                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-2xl text-center md:text-start font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
                     <ul className="list-disc hidden md:block list-inside space-y-2 text-gray-300 mb-2 min-h-[7rem]">
@@ -610,29 +536,30 @@ const skills = {
                 </div>
 
                 {/* Links */}
-                <div className="flex flex-wrap gap-8">
-                 
+                
+                <div className="flex flex-nowrap gap-4 overflow-x-auto">
+  <a href={project.github} target="_blank" rel="noopener noreferrer">
+    <Button
+      variant="outline"
+      size="lg"
+      className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap"
+    >
+      <Github className="mr-2 h-5 w-5" />
+      View Code
+    </Button>
+  </a>
+  <a href={project.demo} target="_blank" rel="noopener noreferrer">
+    <Button
+      variant="outline"
+      size="lg"
+      className="text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white hover:border-white hover:text-white transition-colors whitespace-nowrap"
+    >
+      <ExternalLink className="mr-2 h-4 w-4" />
+      Live Demo
+    </Button>
+  </a>
+</div>
 
-                   {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
-            <a href={project.github}  target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className=" text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
-                <Github className="mr-2 h-5 w-5" />
-                View Code
-              </Button>
-            </a>
-            {/* </div> */}
-
-
-                       {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
-            <a href={project.demo}  target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="  text-white border-2 border-blue-400 hover:bg-gray-700/20 hover:shadow-md hover:shadow-white  hover:border-white hover:text-white transition-colors">
-                 <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
-              </Button>
-            </a>
-            {/* </div> */}
-               
-                </div>
               </div>
             </div>
           ))}
@@ -665,16 +592,16 @@ const skills = {
     </div>
 
      <div
-      className="flex-1 backdrop-blur-sm border border-white/50 rounded-lg p-6 group-hover:border-cyan-500/50 transition-all duration-300 relative z-10 bg-black/60 text-white"
+      className="flex-1 backdrop-blur-sm border border-white/50 rounded-lg p-6 group-hover:border-blue-400/50 transition-all duration-300 relative z-10 bg-black/60 text-white"
     >
       <div className="z-10flex justify-between items-start mb-2">
-        <h3 className="text-xl font-semibold group-hover:text-cyan-400 transition-colors">
+        <h3 className="text-xl font-semibold group-hover:text-blue-400 transition-colors">
           {achievement.title}
         </h3>
         <span className="text-sm text-purple-400 font-medium">{achievement.date}</span>
       </div>
       <p className="text-gray-300">{achievement.description}</p>
-             {/* Background Image */}
+             
     <div
       className="absolute inset-0 rounded-lg bg-cover bg-center opacity-30 filter blur-[2px] z-0"
       style={{
@@ -690,9 +617,7 @@ const skills = {
           </div>
         </div>
 
-        {/* Diagonal Divider */}
-        {/* <div className="absolute bottom-0 right-0 w-full h-24 bg-gradient-to-l from-purple-500/20 to-cyan-500/20 transform skew-y-1" /> */}
-      </section>
+        </section>
 
       {/* Contact Section */}
       <section id="contact" className="relative py-24 px-6">
@@ -701,7 +626,7 @@ const skills = {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 ">
               Let's Connect
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 hidden md:block text-lg max-w-2xl mx-auto">
               Ready to collaborate on your next project? Let's discuss how we can bring your ideas to life.
             </p>
           </div>
@@ -715,18 +640,18 @@ const skills = {
                   technology.
                 </p>
               </div>
-
-              <div className="space-y-4">
+{/* 
+              <div className="md:space-y-4 space-y-">
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-white" />
                   <div className="flex items-center space-x-2">
                     <span className="text-gray-300">brijesh6514@gmail.com</span>
-                    <Button variant="ghost" size="sm" onClick={copyEmail} className="text-cyan-400 hover:text-cyan-300">
+                    <Button variant="ghost" size="sm" onClick={copyEmail} className="text-blue-400 hover:text-blue-400">
                       {emailCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     </Button>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex space-x-4">
                   {/* <div className="bg-black p-1 border-2 border-white rounded-full">   */}
@@ -757,7 +682,7 @@ const skills = {
                     <Input
                     name="name"
                       placeholder="Your Name"
-                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-cyan-500"
+                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400"
                     />
                   </div>
                   <div>
@@ -765,7 +690,7 @@ const skills = {
                     name="email" 
                       type="email"
                       placeholder="Your Email"
-                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-cyan-500"
+                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400"
                     />
                   </div>
                   <div>
@@ -773,10 +698,10 @@ const skills = {
                     name="message" 
                       placeholder="Your Message"
                       rows={5}
-                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-cyan-500 resize-none"
+                      className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 resize-none"
                     />
                   </div>
-                  <Button  type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium">
+                  <Button  type="submit" className="w-full border-2 border-blue-400 hover:shadow-md hover:shadow-white bg-black text-white font-medium">
                     Send Message
                   </Button>
                 </form>
